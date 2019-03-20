@@ -2,15 +2,19 @@
 #define _COMPANY_H_
 
 #include <string>
+#include <list>
 #include "Employee.h"
 class Company{
     private:
         std::string name;
         std::string cnpj;
-        Employee* employees;
+        std::list<Employee> employees;
     public:
-        Company(std::string name, std::string cnpj, Employee* employees);
+        Company(std::string name, std::string cnpj);
         ~Company(){};
+
+        void hire(Employee* employee);
+        void displayEmployees();
 };
 
 #endif
