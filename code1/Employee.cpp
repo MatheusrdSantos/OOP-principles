@@ -15,8 +15,23 @@ bool Employee::operator==(Employee employee){
 }
 
 std::ostream& operator<<(std::ostream &stream, Employee const employee){
+    stream<<"----------------------"<<std::endl;
     stream<<"Name: "<<employee.name<<std::endl;
     stream<<"Salary: "<<employee.salary<<std::endl;
     stream<<"Hiring date: "<<employee.hiringDate<<std::endl;
+    stream<<"----------------------"<<std::endl;
     return stream;
 }
+
+void Employee::setSalary(float salary){
+    this->salary = salary;
+}
+
+float Employee::getSalary(){
+    return this->salary;
+}
+
+Date* Employee::getHiringDate(){
+    return &this->hiringDate;
+}
+

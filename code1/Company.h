@@ -15,6 +15,8 @@ class Company{
 
         void hire(Employee* employee);
         void displayEmployees();
+        void incraseSalary(float percentage);
+        void displayRecentEmployees();
 };
 
 #endif

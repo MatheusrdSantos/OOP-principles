@@ -13,8 +13,11 @@ class Employee{
         Employee(std::string name, float salary, Date* hiringDate);
         ~Employee(){};
         
-        bool operator==(Employee employee);
+        void setSalary(float salary);
+        float getSalary();
+        Date* getHiringDate();
 
+        bool operator==(Employee employee);
         friend std::ostream& operator<< (std::ostream &stream, Employee employee);
 
 };
