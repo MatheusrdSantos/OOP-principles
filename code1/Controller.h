@@ -24,6 +24,7 @@ class Controller{
         static void increaseSalary();
         static void listNewEmployees();
         static void displayEmployeesAverage();
+        static void executeTest();
     public:
 
         static void run();
