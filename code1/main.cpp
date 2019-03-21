@@ -1,9 +1,6 @@
 #include <iostream>
-#include "Employee.h"
-#include "Company.h"
-#include "Controller.h"
 #include <list>
-using namespace std;
+#include "Controller.h"
 
 int main(int argc, char const *argv[]){
 

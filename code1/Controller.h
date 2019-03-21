@@ -11,10 +11,11 @@ using namespace std;
 
 class Controller{
     private:
+        static list<Company*> companies;
         static void printMenu();
         static int getUserCommand();
+        static void createCompany();
     public:
-        static list<Company*> companies;
 
         static void run();
 };
