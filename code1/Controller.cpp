@@ -1,17 +1,17 @@
 #include "Controller.h"
 
 using namespace std;
-list<Company*> companies;
-list<Company*> Controller::companies = companies;
+
+list<Company*> Controller::companies;
 void Controller::printMenu(){
     cout<<"Company manager: "<<endl;
     cout<<"1 - Create company; "<<endl;
     cout<<"2 - Hire employee; "<<endl;
-    cout<<"3 - Listar funcionários; "<<endl;
-    cout<<"4 - Aumentar salários; "<<endl;
-    cout<<"5 - Listar funcionários novos (últimos 90 dias); "<<endl;
-    cout<<"6 - Ver média de funcionários por empresa; "<<endl;
-    cout<<"7 - Sair; "<<endl;
+    cout<<"3 - List Employees; "<<endl;
+    cout<<"4 - Increase salary; "<<endl;
+    cout<<"5 - List new employees (last 90 days); "<<endl;
+    cout<<"6 - Display employee average; "<<endl;
+    cout<<"7 - Exit; "<<endl;
 }
 int Controller::getUserCommand(){
     int command;
@@ -28,7 +28,6 @@ void Controller::createCompany(){
     cout<<"Name: ";
     cin.ignore();
     getline(cin, name);
-    //cin>>name;
     cout<<"CNPJ: ";
     cin>>cnpj;
     
@@ -85,15 +84,45 @@ void Controller::addEmployee(){
    hireEmployee(employee);
 }
 
+void Controller::listEmployees(){
+    Company* company = chooseCompany();
+    company->displayEmployees();
+}
+
+void Controller::increaseSalary(){
+    Company* company = chooseCompany();
+    float increase;
+    cout<<"Amount of increase in percentage: ";
+    cin>>increase;
+    company->incraseSalary(increase);
+}
+
+void Controller::listNewEmployees(){
+    Company* company = chooseCompany();
+    company->displayRecentEmployees();
+}
+
+void Controller::displayEmployeesAverage(){
+    cout<<"Average (Employee per Company): "<<Employee::nEmployees/Company::nCompanies<<endl;
+}
+
 void Controller::run(){
     int command = 0;
     while(command!=7){
         printMenu();
         command = getUserCommand();
-        if(command==1){
+        if(command == 1){
             createCompany();
-        }else if(command==2){
+        }else if(command == 2){
             addEmployee();
+        }else if(command == 3){
+            listEmployees();
+        }else if(command == 4){
+            increaseSalary();
+        }else if(command == 5){
+            listNewEmployees();
+        }else if(command == 6){
+            displayEmployeesAverage();
         }
     }
 }

@@ -19,7 +19,20 @@ std::string Company::getName(){
     return this->name;
 }
 void Company::hire(Employee* employee){
-    bool found = (std::find(this->employees.begin(), this->employees.end(), employee) != this->employees.end());
+    //bool found = (std::find(this->employees.begin(), this->employees.end(), employee) != this->employees.end());
+    auto it = this->employees.begin();
+    auto end = this->employees.end();
+    bool found = false;
+    //std::cout<<"Employees: "<<std::endl;
+    for(;end!=it; advance(it, 1))
+    {
+        if((*(*it)) == employee){
+            found = true;
+            break;
+        }
+    }
+
+    std::cout<<std::endl;
     if(found){
         std::cout<<"Employee already exists!"<<std::endl;
     }else{

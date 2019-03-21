@@ -20,6 +20,10 @@ class Controller{
         static void createCompany();
         static void addEmployee();
         static void hireEmployee(Employee* employee);
+        static void listEmployees();
+        static void increaseSalary();
+        static void listNewEmployees();
+        static void displayEmployeesAverage();
     public:
 
         static void run();
