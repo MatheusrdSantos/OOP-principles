@@ -8,15 +8,18 @@ class Company{
     private:
         std::string name;
         std::string cnpj;
-        std::list<Employee> employees;
+        std::list<Employee*> employees;
     public:
         Company(std::string name, std::string cnpj);
-        ~Company(){};
+        ~Company();
+        
+        static int nCompanies;
 
         void hire(Employee* employee);
         void displayEmployees();
         void incraseSalary(float percentage);
         void displayRecentEmployees();
+        void fire(Employee* employee);
 };
 
 #endif
