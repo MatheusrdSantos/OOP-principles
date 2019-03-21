@@ -5,7 +5,10 @@ using namespace std;
 list<Company*> Controller::companies;
 void Controller::printMenu(){
     cout<<"Company manager: "<<endl;
-    cout<<"0 - Execute test without input (preloaded case);"<<endl;
+    cout<<"If you do not want to use the menu: "<<endl<<endl;
+    cout<<"0 - Execute test (preloaded data);"<<endl<<endl;
+
+    cout<<"Menu: "<<endl;
     cout<<"1 - Create company; "<<endl;
     cout<<"2 - Hire employee; "<<endl;
     cout<<"3 - List Employees; "<<endl;
