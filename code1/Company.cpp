@@ -15,13 +15,16 @@ Company::Company(std::string name, std::string cnpj){
 Company::~Company(){
     Company::nCompanies--;
 }
-
+std::string Company::getName(){
+    return this->name;
+}
 void Company::hire(Employee* employee){
     bool found = (std::find(this->employees.begin(), this->employees.end(), employee) != this->employees.end());
     if(found){
         std::cout<<"Employee already exists!"<<std::endl;
     }else{
         this->employees.push_back(employee);
+        std::cout<<"Employee hired!"<<std::endl;
         Employee::nEmployees++;
     }
 }

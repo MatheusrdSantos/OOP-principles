@@ -20,6 +20,8 @@ class Company{
         void incraseSalary(float percentage);
         void displayRecentEmployees();
         void fire(Employee* employee);
+        std::string getName();
+        
 };
 
 #endif

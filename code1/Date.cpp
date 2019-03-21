@@ -109,6 +109,13 @@ std::ostream& operator<<(std::ostream &stream, Date const date){
     stream<<date.day<<"/"<<date.month<<"/"<<date.year;
     return stream;
 }
+
+std::istream& operator>>(std::istream &stream, Date* date){
+    char separator = '/';
+    stream>>date->day>>separator>>date->month>>separator>>date->year;
+    return stream;
+}
+
 void Date::normalizeDay(){
     if(this->day>DAYS_IN_MONTH){
         int newDay = this->day%DAYS_IN_MONTH;

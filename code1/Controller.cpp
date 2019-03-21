@@ -26,13 +26,63 @@ void Controller::createCompany(){
     
     cout<<"Company register:"<<endl;
     cout<<"Name: ";
-    cin>>name;
+    cin.ignore();
+    getline(cin, name);
+    //cin>>name;
     cout<<"CNPJ: ";
     cin>>cnpj;
+    
     Company* company = new Company(name, cnpj);
     companies.push_back(company);
 
     cout<<"Company added."<<endl;
+}
+
+void Controller::listCompanies(){
+    auto it = companies.begin();
+    auto end = companies.end();
+    int i = 1;
+    std::cout<<"Companies: "<<std::endl;
+    for(;end!=it; advance(it, 1))
+    {
+        std::cout<<i<<" - "<<(*it)->getName()<<';'<<endl;
+        i++;
+    }
+}
+
+Company* Controller::chooseCompany(){
+    int i;
+    listCompanies();
+    cout<<"Choose one company: ";
+    cin>>i;
+
+    auto it = companies.begin();
+    advance(it, i-1);
+
+    return (*it);
+}
+
+void Controller::hireEmployee(Employee* employee){
+    Company* company = chooseCompany();
+    company->hire(employee);
+}
+
+void Controller::addEmployee(){
+   std::string name;
+   float salary;
+   Date* hiringDate = new Date(); 
+   cout<<"Employee register:"<<endl;
+   cout<<"Name: ";
+   cin.ignore();
+   getline(cin, name);
+   cout<<"salary: ";
+   cin>>salary;
+   cout<<"*date format: dd/mm/yyyy"<<endl;
+   cout<<"hiringDate: ";
+   cin>>hiringDate;
+   Employee* employee = new Employee(name, salary, hiringDate);
+   cout<<employee;
+   hireEmployee(employee);
 }
 
 void Controller::run(){
@@ -42,6 +92,8 @@ void Controller::run(){
         command = getUserCommand();
         if(command==1){
             createCompany();
+        }else if(command==2){
+            addEmployee();
         }
     }
 }

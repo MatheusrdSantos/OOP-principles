@@ -5,7 +5,9 @@
 #define MONTHS_IN_YEAR 12
 
 #include <string>
+#include <iostream>
 #include <ostream>
+#include <istream>
 
 class Date{
     private:
@@ -28,6 +30,7 @@ class Date{
         bool operator<(Date date);
         bool operator>(Date date);
         friend std::ostream& operator<< (std::ostream &stream, Date date);
+        friend std::istream& operator>> (std::istream &stream, Date* date);
 };
 
 #endif
