@@ -4,13 +4,15 @@
 #include <string>
 #include "Date.h"
 #include <ostream>
+
+using namespace std;
 class Employee{
     private:
-        std::string name;
+        string name;
         float salary;
         Date hiringDate;
     public:
-        Employee(std::string name, float salary, Date* hiringDate);
+        Employee(string name, float salary, Date* hiringDate);
         ~Employee();
         
         void setSalary(float salary);
@@ -19,7 +21,7 @@ class Employee{
         static int nEmployees;
 
         bool operator==(Employee* employee);
-        friend std::ostream& operator<< (std::ostream &stream, Employee* employee);
+        friend ostream& operator<< (ostream &stream, Employee* employee);
 
 };
 

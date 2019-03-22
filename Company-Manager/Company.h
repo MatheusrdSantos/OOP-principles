@@ -4,13 +4,14 @@
 #include <string>
 #include <list>
 #include "Employee.h"
+using namespace std;
 class Company{
     private:
-        std::string name;
-        std::string cnpj;
-        std::list<Employee*> employees;
+        string name;
+        string cnpj;
+        list<Employee*> employees;
     public:
-        Company(std::string name, std::string cnpj);
+        Company(string name, string cnpj);
         ~Company();
         
         static int nCompanies;
@@ -20,7 +21,7 @@ class Company{
         void incraseSalary(float percentage);
         void displayRecentEmployees();
         void fire(Employee* employee);
-        std::string getName();
+        string getName();
         
 };
 

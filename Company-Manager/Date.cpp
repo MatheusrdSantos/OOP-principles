@@ -104,13 +104,12 @@ bool Date::operator>(Date date){
     }
 }
 
-std::ostream& operator<<(std::ostream &stream, Date const date){
-    // change this code to american pattern
+ostream& operator<<(ostream &stream, Date const date){
     stream<<date.day<<"/"<<date.month<<"/"<<date.year;
     return stream;
 }
 
-std::istream& operator>>(std::istream &stream, Date* date){
+istream& operator>>(istream &stream, Date* date){
     char separator = '/';
     stream>>date->day>>separator>>date->month>>separator>>date->year;
     return stream;

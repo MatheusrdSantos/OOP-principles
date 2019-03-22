@@ -1,7 +1,5 @@
 #include "Controller.h"
 
-using namespace std;
-
 list<Company*> Controller::companies;
 void Controller::printMenu(){
     cout<<"Company manager: "<<endl;

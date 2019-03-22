@@ -5,7 +5,7 @@
 #include "Dice.h"
 
 int main(int argc, char const *argv[]){
-    GameController game(35);
+    GameController game(30);
     game.start();
     return 0;
 }

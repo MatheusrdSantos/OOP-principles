@@ -8,7 +8,7 @@
 #include <iostream>
 #include <ostream>
 #include <istream>
-
+using namespace std;
 class Date{
     private:
         int day;
@@ -29,8 +29,8 @@ class Date{
         bool operator>=(Date date);
         bool operator<(Date date);
         bool operator>(Date date);
-        friend std::ostream& operator<< (std::ostream &stream, Date date);
-        friend std::istream& operator>> (std::istream &stream, Date* date);
+        friend ostream& operator<< (ostream &stream, Date date);
+        friend istream& operator>> (istream &stream, Date* date);
 };
 
 #endif

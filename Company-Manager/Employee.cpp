@@ -2,7 +2,7 @@
 
 int Employee::nEmployees = 0; 
 
-Employee::Employee(std::string name,float salary, Date* hiringDate){
+Employee::Employee(string name,float salary, Date* hiringDate){
     this->name = name;
     this->salary = salary;
     this->hiringDate = (*hiringDate);
@@ -20,12 +20,12 @@ bool Employee::operator==(Employee* employee){
     }
 }
 
-std::ostream& operator<<(std::ostream &stream, Employee* const employee){
-    stream<<"----------------------"<<std::endl;
-    stream<<"Name: "<<employee->name<<std::endl;
-    stream<<"Salary: "<<employee->salary<<std::endl;
-    stream<<"Hiring date: "<<employee->hiringDate<<std::endl;
-    stream<<"----------------------"<<std::endl;
+ostream& operator<<(ostream &stream, Employee* const employee){
+    stream<<"----------------------"<<endl;
+    stream<<"Name: "<<employee->name<<endl;
+    stream<<"Salary: "<<employee->salary<<endl;
+    stream<<"Hiring date: "<<employee->hiringDate<<endl;
+    stream<<"----------------------"<<endl;
     return stream;
 }
 
