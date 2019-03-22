@@ -3,12 +3,28 @@
 GameController::GameController(int limitScore){
     this->limitScore = limitScore;
     this->rounds = 0;
+    Dice* d1 = new Dice();
+    this->dices.push_back(d1);
+    Dice* d2 = new Dice();
+    this->dices.push_back(d2);
     this->playersRemaining = 0;
 }
 
 void GameController::addPlayer(Player* player){
     this->players.push_back(player);
     this->playersRemaining++;
+}
+
+int GameController::throwDices(){
+    auto it = this->dices.begin();
+    auto end = this->dices.end();
+    int score = 0;
+    for(; it!=end; advance(it, 1))
+    {
+        int value = (*it)->throwDice();
+        score+=value;
+    }
+    return score;
 }
 
 void GameController::playerTurn(Player* player){
@@ -21,7 +37,7 @@ void GameController::playerTurn(Player* player){
         player->exitGame();
         this->playersRemaining--;
     }else{
-        player->throwDices();
+        player->sumScore(throwDices());
         cout<<"Your new score: "<<player->getScore()<<endl;
         if(player->getScore()>this->limitScore){
             cout<<"You lose!"<<endl;
@@ -38,7 +54,7 @@ void GameController::nextRound(){
     auto end = this->players.end();
     for(; it!=end; advance(it, 1))
     {
-        if((*it)->isInGame() && this->playersRemaining>0){
+        if((*it)->isInGame() && this->playersRemaining>1){
             cout<<endl;
             cout<<"MAX LIMIT: "<<this->limitScore<<endl;
             playerTurn((*it));
@@ -100,7 +116,7 @@ void GameController::start(){
     this->addPlayer(&p1);
     this->addPlayer(&p2);
     this->addPlayer(&p3);
-    while(this->playersRemaining>0){
+    while(this->playersRemaining>1){
         nextRound();
     }
     displayScores();

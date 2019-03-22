@@ -4,6 +4,7 @@
 #include <string>
 #include <list>
 #include "Player.h"
+#include "Dice.h"
 using namespace std;
 class GameController{
     private:
@@ -11,6 +12,7 @@ class GameController{
         int rounds;
         list<Player*> players;
         int playersRemaining;
+        list<Dice*> dices;
     public:
         GameController(int limitScore);
         ~GameController(){};
@@ -21,6 +23,7 @@ class GameController{
         void start();
         void displayWinner();
         void displayScores();
+        int throwDices();
 };
 
 #endif

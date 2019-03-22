@@ -3,14 +3,12 @@
 
 #include <string>
 #include <list>
-#include <random>
-#include "Dice.h"
+#include<iostream>
 using namespace std;
 class Player{
     private:
         string name;
         int score;
-        list<Dice*> dices;
         bool inGame;
     public:
         Player(string name);
@@ -21,6 +19,7 @@ class Player{
         bool isInGame();
         string getName();
         int getScore();
+        void sumScore(int sum);
         friend ostream& operator<< (ostream &stream, Player* player);
 };
 
