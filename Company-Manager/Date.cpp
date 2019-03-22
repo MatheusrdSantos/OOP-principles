@@ -12,6 +12,7 @@ Date::Date(){
     this->year = 0;
 }
 
+// overload operator ==
 bool Date::operator==(Date date){
     if(this->day == date.day && this->month == date.month && this->year == date.year){
         return true;
@@ -20,6 +21,7 @@ bool Date::operator==(Date date){
     }
 }
 
+// overload operator <=
 bool Date::operator<=(Date date){
     if((*this)==date){
         return true;
@@ -42,6 +44,8 @@ bool Date::operator<=(Date date){
         return false;
     }
 }
+
+// overload operator <
 bool Date::operator<(Date date){
     if(this->year<date.year){
         return true;
@@ -62,6 +66,7 @@ bool Date::operator<(Date date){
     }
 }
 
+// overload operator >=
 bool Date::operator>=(Date date){
     if((*this)==date){
         return true;
@@ -84,6 +89,8 @@ bool Date::operator>=(Date date){
         return false;
     }
 }
+
+// overload operator >
 bool Date::operator>(Date date){
     if(this->year>date.year){
         return true;
@@ -104,17 +111,20 @@ bool Date::operator>(Date date){
     }
 }
 
+// overload operator <<
 ostream& operator<<(ostream &stream, Date const date){
     stream<<date.day<<"/"<<date.month<<"/"<<date.year;
     return stream;
 }
 
+// overload operator >>
 istream& operator>>(istream &stream, Date* date){
     char separator = '/';
     stream>>date->day>>separator>>date->month>>separator>>date->year;
     return stream;
 }
 
+// put day between 1 and 30, the remaining is added to months
 void Date::normalizeDay(){
     if(this->day>DAYS_IN_MONTH){
         int newDay = this->day%DAYS_IN_MONTH;
@@ -123,6 +133,8 @@ void Date::normalizeDay(){
         this->month+=monthsToSum; 
     }
 }
+
+// put month between 1 and 12, the remaining is added to years
 void Date::normalizeMonth(){
     if(this->month>MONTHS_IN_YEAR){
         int newMonth = this->month%MONTHS_IN_YEAR;
@@ -131,11 +143,14 @@ void Date::normalizeMonth(){
         this->year+=yearsToSum; 
     }
 }
+
+// put days and months in the right format
 void Date::normalizeDate(){
     normalizeDay();
     normalizeMonth();
 }
 
+// add N days to a date
 Date Date::sumDays(int nDays){
     Date newDate(this->day, this->month, this->year);
     newDate.day+=nDays;

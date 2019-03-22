@@ -10,11 +10,14 @@ GameController::GameController(int limitScore){
     this->playersRemaining = 0;
 }
 
+// add palyer in game
 void GameController::addPlayer(Player* player){
     this->players.push_back(player);
     this->playersRemaining++;
 }
 
+
+// throw the dices and return the sum of each one
 int GameController::throwDices(){
     auto it = this->dices.begin();
     auto end = this->dices.end();
@@ -27,6 +30,7 @@ int GameController::throwDices(){
     return score;
 }
 
+// execute the player turn (only one player throw the dices)
 void GameController::playerTurn(Player* player){
     cout<<"Player turn: "<<player->getName()<<endl;
     cout<<"Your score: "<<player->getScore()<<endl;
@@ -49,6 +53,7 @@ void GameController::playerTurn(Player* player){
     }
 }
 
+// execute one round (all remaining players gonna play)
 void GameController::nextRound(){
     auto it = this->players.begin();
     auto end = this->players.end();
@@ -64,11 +69,13 @@ void GameController::nextRound(){
     }
 }
 
+// show the winner or the winners (more than one player had the same score)
 void GameController::displayWinner(){
     auto it = this->players.begin();
     auto end = this->players.end();
 
     int winnerScore = 0;
+    //check the highest score
     for(; it!=end; advance(it, 1))
     {
         if((*it)->getScore()>winnerScore  && (*it)->getScore()<=this->limitScore){
@@ -98,6 +105,7 @@ void GameController::displayWinner(){
     
 }
 
+// print all scores  when the game ends
 void GameController::displayScores(){
     auto it = this->players.begin();
     auto end = this->players.end();
@@ -105,10 +113,10 @@ void GameController::displayScores(){
     for(; it!=end; advance(it, 1))
     {
        cout<<(*it)<<endl;
-    }
-    
+    }  
 }
 
+// stat the game
 void GameController::start(){
     Player p1("José");
     Player p2("Maria");

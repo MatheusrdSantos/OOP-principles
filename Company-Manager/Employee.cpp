@@ -12,6 +12,7 @@ Employee::~Employee(){
     
 }
 
+// overload operator ==
 bool Employee::operator==(Employee* employee){
     if(this->name == employee->name && this->salary == employee->salary && this->hiringDate==employee->hiringDate){
         return true;
@@ -20,6 +21,7 @@ bool Employee::operator==(Employee* employee){
     }
 }
 
+// overload operator <<
 ostream& operator<<(ostream &stream, Employee* const employee){
     stream<<"----------------------"<<endl;
     stream<<"Name: "<<employee->name<<endl;

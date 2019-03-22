@@ -1,6 +1,8 @@
 #include "Controller.h"
 
 list<Company*> Controller::companies;
+
+// print menu on terminal
 void Controller::printMenu(){
     cout<<"Company manager: "<<endl;
     cout<<"If you do not want to use the menu: "<<endl<<endl;
@@ -15,6 +17,8 @@ void Controller::printMenu(){
     cout<<"6 - Display employee average; "<<endl;
     cout<<"7 - Exit; "<<endl;
 }
+
+// read amn interger number from terminal
 int Controller::getUserCommand(){
     int command;
     cout<<"-> ";
@@ -22,6 +26,7 @@ int Controller::getUserCommand(){
     return command;
 }
 
+// get user input to create a company
 void Controller::createCompany(){
     string name;
     string cnpj;
@@ -39,6 +44,7 @@ void Controller::createCompany(){
     cout<<"Company added."<<endl;
 }
 
+// print companies
 void Controller::listCompanies(){
     auto it = companies.begin();
     auto end = companies.end();
@@ -51,6 +57,9 @@ void Controller::listCompanies(){
     }
 }
 
+// choose company in two steps: 
+// 1 - print a list with all companies
+// 2 - request a number to select a company
 Company* Controller::chooseCompany(){
     int i;
     listCompanies();
@@ -63,11 +72,13 @@ Company* Controller::chooseCompany(){
     return (*it);
 }
 
+// associate a employee to a company
 void Controller::hireEmployee(Employee* employee){
     Company* company = chooseCompany();
     company->hire(employee);
 }
 
+// create a new employee
 void Controller::addEmployee(){
    std::string name;
    float salary;
@@ -86,11 +97,13 @@ void Controller::addEmployee(){
    hireEmployee(employee);
 }
 
+// display all employees hired in one company
 void Controller::listEmployees(){
     Company* company = chooseCompany();
     company->displayEmployees();
 }
 
+// get an float input and increase salary
 void Controller::increaseSalary(){
     Company* company = chooseCompany();
     float increase;
@@ -99,17 +112,23 @@ void Controller::increaseSalary(){
     company->incraseSalary(increase);
 }
 
+// list all new employees recently hired (last 90 days) in one company
 void Controller::listNewEmployees(){
     Company* company = chooseCompany();
     company->displayRecentEmployees();
 }
 
+// display the average of employee per company
 void Controller::displayEmployeesAverage(){
     cout<<"Average (Employee per Company): "<<Employee::nEmployees/Company::nCompanies<<endl;
 }
 
+// execute a test containing all functionalities
 void Controller::executeTest(){
+    // create company
     Company google("google", "1231");
+    
+    // create dates and employess
     Date d1(19, 3, 2018);
     Date d2(19, 3, 2019);
     Date d3(10, 3, 2019);
@@ -117,16 +136,19 @@ void Controller::executeTest(){
     Employee e2("João Carlos", 1000.0, &d2);
     Employee e3("Maria J.", 3000.0, &d3);
 
+    // hire employees
     cout<<"HIRING AT GOOGLE:"<<endl;
     google.hire(&e1);
     google.hire(&e2);
     google.hire(&e3);
 
+    // test hiring the same employee on the same company
     cout<<"CANT HIRE TWICE: "<<endl;
     google.hire(&e1);
+    
+    // increasing salary and displaying employees
     google.incraseSalary(5.3);
     google.displayEmployees();
-
     cout<<"DISPLAY RECENT EMPLYEES(90 DAYS BEFORE): "<<endl;
     google.displayRecentEmployees();
     
@@ -161,6 +183,7 @@ void Controller::executeTest(){
     std::cout<<"Avarage: "<<Employee::nEmployees/Company::nCompanies<<std::endl;
 }
 
+// start program
 void Controller::run(){
     int command = 0;
     while(command!=7){

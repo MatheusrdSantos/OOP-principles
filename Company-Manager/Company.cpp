@@ -18,12 +18,12 @@ Company::~Company(){
 string Company::getName(){
     return this->name;
 }
+
+// add employees into company
 void Company::hire(Employee* employee){
-    //bool found = (find(this->employees.begin(), this->employees.end(), employee) != this->employees.end());
     auto it = this->employees.begin();
     auto end = this->employees.end();
     bool found = false;
-    //cout<<"Employees: "<<endl;
     for(;end!=it; advance(it, 1))
     {
         if((*(*it)) == employee){
@@ -42,6 +42,7 @@ void Company::hire(Employee* employee){
     }
 }
 
+// remove a employee from company
 void Company::fire(Employee* employee){
     int old_size = this->employees.size(); 
     this->employees.remove(employee);
@@ -54,6 +55,7 @@ void Company::fire(Employee* employee){
     }
 }
 
+// print all employees hired
 void Company::displayEmployees(){
     auto it = this->employees.begin();
     auto end = this->employees.end();
@@ -67,6 +69,7 @@ void Company::displayEmployees(){
     cout<<endl;
 }
 
+// increase all salaries by n%
 void Company::incraseSalary(float percentage){
     auto it = this->employees.begin();
     auto end =this->employees.end();
@@ -77,10 +80,12 @@ void Company::incraseSalary(float percentage){
     }
 }
 
+// print all employees hired in the las 90 days
 void Company::displayRecentEmployees(){
     auto it = this->employees.begin();
     auto end =this->employees.end();
 
+    // get actual date
     time_t t = time(NULL);
 	tm* timePtr = localtime(&t);
     

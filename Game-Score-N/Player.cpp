@@ -6,6 +6,7 @@ Player::Player(string name){
     this->inGame = true;
 }
 
+// remove player from match (the player choose to stop)
 void Player::exitGame(){
     this->inGame = false;
 }
@@ -22,12 +23,14 @@ int Player::getScore(){
     return this->score;
 }
 
+// overload operator <<
 std::ostream& operator<<(std::ostream &stream, Player* const player){
     stream<<endl<<"Name: "<<player->name<<endl;
     stream<<"Score: "<<player->score<<endl<<endl;
     return stream;
 }
 
+// add score
 void Player::sumScore(int sum){
     this->score+=sum;
 }
