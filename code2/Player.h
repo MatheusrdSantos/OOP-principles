@@ -19,6 +19,9 @@ class Player{
         int throwDices();
         void exitGame();
         bool isInGame();
+        string getName();
+        int getScore();
+        friend ostream& operator<< (ostream &stream, Player* player);
 };
 
 #endif

@@ -28,3 +28,17 @@ void Player::exitGame(){
 bool Player::isInGame(){
     return this->inGame;
 }
+
+string Player::getName(){
+    return this->name;
+}
+
+int Player::getScore(){
+    return this->score;
+}
+
+std::ostream& operator<<(std::ostream &stream, Player* const player){
+    stream<<endl<<"Name: "<<player->name<<endl;
+    stream<<"Score: "<<player->score<<endl<<endl;
+    return stream;
+}
