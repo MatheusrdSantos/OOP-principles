@@ -27,6 +27,8 @@ void GameController::playerTurn(Player* player){
             cout<<"You lose!"<<endl;
             player->exitGame();
             this->playersRemaining--;
+        }else if(player->getScore()==this->limitScore){
+            this->playersRemaining=0;
         }
     }
 }
@@ -36,7 +38,7 @@ void GameController::nextRound(){
     auto end = this->players.end();
     for(; it!=end; advance(it, 1))
     {
-        if((*it)->isInGame()){
+        if((*it)->isInGame() && this->playersRemaining>0){
             playerTurn((*it));
         }
     }
@@ -67,9 +69,21 @@ void GameController::displayWinner(){
     
 }
 
+void GameController::displayScores(){
+    auto it = this->players.begin();
+    auto end = this->players.end();
+    cout<<endl<<"Scores: "<<endl;
+    for(; it!=end; advance(it, 1))
+    {
+       cout<<(*it)<<endl;
+    }
+    
+}
+
 void GameController::start(){
     while(this->playersRemaining>0){
         nextRound();
     }
+    displayScores();
     displayWinner();
 }

@@ -20,6 +20,7 @@ class GameController{
         void playerTurn(Player* player);
         void start();
         void displayWinner();
+        void displayScores();
 };
 
 #endif
