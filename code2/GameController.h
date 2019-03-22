@@ -7,11 +7,19 @@
 using namespace std;
 class GameController{
     private:
-        int limitScore; 
+        int limitScore;
+        int rounds;
         list<Player*> players;
+        int playersRemaining;
     public:
-        GameController(list<Player*> players, int limitScore);
+        GameController(int limitScore);
         ~GameController(){};
+
+        void addPlayer(Player* player);
+        void nextRound();
+        void playerTurn(Player* player);
+        void start();
+        void displayWinner();
 };
 
 #endif
